@@ -2,6 +2,11 @@
   "name": "thecollectible",
   "module": "index.ts",
   "type": "module",
+
+  "scripts": {
+  "dev": "bun run --hot index.ts"
+}, 
+
   "devDependencies": {
     "@types/bun": "latest",
     "prisma": "5.21.1"
