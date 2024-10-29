@@ -28,4 +28,8 @@ export async function updateUser(id: string, data: Partial<{ name: string; email
     return await prisma.user.delete({ where: { id } });
   }
   
+
+export async function getAllUsers() {
+    return await prisma.user.findMany();
+}
   

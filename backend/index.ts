@@ -1,9 +1,10 @@
 import { Hono } from "hono";
+import userRoutes from "./api/src/routes/userRoutes";
 
-const app = new Hono()
+const app = new Hono();
 
-app.get('/api', (c)=> c.text('Hono'))
+app.route('/api/users', userRoutes);
+app.get('/api', (c) => c.json({ message: 'Hono' }));
 
+export default app;
 
-
-export default app
