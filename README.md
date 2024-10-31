@@ -2,16 +2,6 @@
 
 This project is a backend built with **Prisma**, **Hono**, and **Bun**. It is organized following an architecture that separates concerns using **routes**, **services**, and **controllers**.
 
-## Table of Contents
-
-- [Technologies](#technologies)
-- [Installation](#installation)
-- [Project Structure](#project-structure)
-- [Database Configuration](#database-configuration)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Contribution](#contribution)
-- [License](#license)
 
 ## Technologies
 
