@@ -18,6 +18,6 @@ Make sure you have [Bun](https://bun.sh/) installed on your machine.
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/USERNAME/REPOSITORY_NAME.git
+git clone https://github.com/USERNAME/Connectify.git
 cd REPOSITORY_NAME
 
