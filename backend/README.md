@@ -1,3 +1,2 @@
-# TheCollectible
+# Connectify 
 
-# Configuration de Prisma db 
