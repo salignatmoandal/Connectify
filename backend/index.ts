@@ -11,18 +11,18 @@ const app = new Hono();
 app.route('/api/users', userRoutes);
 
 
-app.post('/api/users', (c) => {
-    const newUser = {
-        id: uuid(),
-        email: faker.internet.email(),
-        name: faker.name.firstName() ,
-        password: faker.internet.password(),
-        role: 'USER',
-        createdAt: new Date(),
-        updatedAt: new Date()
-    };
-    return c.json(newUser, 201);
-});
+// app.post('/api/users', (c) => {
+//     const newUser = {
+//         id: uuid(),
+//         email: faker.internet.email(),
+//         name: faker.name.firstName() ,
+//         password: faker.internet.password(),
+//         role: 'USER',
+//         createdAt: new Date(),
+//         updatedAt: new Date()
+//     };
+//     return c.json(newUser, 201);
+// });
 
 export default app;
 

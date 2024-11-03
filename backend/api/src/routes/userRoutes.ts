@@ -2,21 +2,21 @@ import { Hono } from 'hono';
 import { createUser, getUserById, getAllUsers, updateUser, deleteUser } from '../controllers/userControllers';
 import authMiddleware from '../middlewares/authMiddleware';
 
-const app = new Hono();
+const userRoutes = new Hono();
 
 // Route publique pour créer un utilisateur
-app.post('/users', createUser);
+userRoutes.post('/', createUser);
 
 // Route publique pour obtenir tous les utilisateurs
-app.get('/users', getAllUsers);
+userRoutes.get('/', getAllUsers);
 
 // Route protégée : obtenir un utilisateur par ID
-app.get('/users/:id', authMiddleware, getUserById);
+userRoutes.get('/:id', authMiddleware, getUserById);
 
 // Route protégée : mettre à jour un utilisateur par ID
-app.put('/users/:id', authMiddleware, updateUser);
+userRoutes.put('/:id', authMiddleware, updateUser);
 
 // Route protégée : supprimer un utilisateur par ID
-app.delete('/users/:id', authMiddleware, deleteUser);
+userRoutes.delete('/:id', authMiddleware, deleteUser);
 
-export default app;
+export default userRoutes;

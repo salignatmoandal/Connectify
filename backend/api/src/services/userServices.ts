@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from 'bcrypt';
-import { password } from "bun";
+
 
 // Initailisation de prisma client 
 const prisma = new PrismaClient();
