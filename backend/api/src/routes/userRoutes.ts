@@ -1,13 +1,22 @@
-// src/routes/userRoutes.ts
 import { Hono } from 'hono';
-import * as userController from '../controllers/userControllers';
+import { createUser, getUserById, getAllUsers, updateUser, deleteUser } from '../controllers/userControllers';
+import authMiddleware from '../middlewares/authMiddleware';
 
-const userRoutes = new Hono();
+const app = new Hono();
 
- userRoutes.post('/', userController.createUser);
-userRoutes.get('/', userController.getAllUsers);
-userRoutes.get('/:id', userController.getUserById);
-userRoutes.put('/:id', userController.updateUser);
-userRoutes.delete('/:id', userController.deleteUser);
+// Route publique pour créer un utilisateur
+app.post('/users', createUser);
 
-export default userRoutes;
+// Route publique pour obtenir tous les utilisateurs
+app.get('/users', getAllUsers);
+
+// Route protégée : obtenir un utilisateur par ID
+app.get('/users/:id', authMiddleware, getUserById);
+
+// Route protégée : mettre à jour un utilisateur par ID
+app.put('/users/:id', authMiddleware, updateUser);
+
+// Route protégée : supprimer un utilisateur par ID
+app.delete('/users/:id', authMiddleware, deleteUser);
+
+export default app;
