@@ -1,6 +1,7 @@
 import { type Context } from "hono";
 import * as userService from "../services/userServices";
 
+
 // Utilisation des contrôleurs pour les utilisateurs
 
 export const createUser = async (c: Context) => {
@@ -8,9 +9,21 @@ export const createUser = async (c: Context) => {
   if (!data) {
     return c.json({ error: "Invalid JSON input" }, 400);
   }
-  const user = await userService.createUser(data);
+
+  // Extraire les champs `email`, `password`, et `name` de `data`
+  const { email, password, name } = data;
+
+  // Vérification basique pour s'assurer que les données requises sont présentes
+  if (!email || !password || !name) {
+    return c.json({ error: "Missing required fields: email, password, and name" }, 400);
+  }
+
+  // Appeler `userService.createUser` avec les arguments nécessaires
+  const user = await userService.createUser(email, password, name);
+  
   return c.json(user, 201);
 };
+
 
 // Logique de métiers pour GetUserById
 export const getUserById = async (c: Context) => {
