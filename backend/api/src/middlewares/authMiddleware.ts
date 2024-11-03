@@ -1,5 +1,15 @@
 import type { Context, Next } from 'hono'; //
 import jwt from 'jsonwebtoken';
+import { config } from 'dotenv';
+
+
+config();
+const JWT_SECRET = process.env.JWT_SECRET;
+
+// Vérifiez si JWT_SECRET est défini
+if (!JWT_SECRET) {
+    throw new Error('JWT_SECRET is not defined in the environment variables.');
+}
 
 
 // Étendre HonoRequest pour ajouter la propriété `user`
@@ -10,7 +20,7 @@ declare module 'hono' {
   }
 
 
-const JWT_SECRET = process.env.JWT_SECRET || 'https://jwt.io/#debugger-io?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'; // Votre clé secrète pour signer les tokens
+
 
 export default async (c: Context, next: Next) => {
   const authHeader = c.req.header('Authorization'); // Récupération de l'en-tête Authorization
